@@ -1,13 +1,26 @@
 import React, { useState } from "react";
+import "../styles/Meme.css";
 import memesData from "../assets/memesData";
 
 export default function Meme() {
-  const [memeImage, setMemeImage] = React.useState("");
+  const meme = {
+    topText: "",
+    bottomText: "",
+    randomImage: "http://i.imgflip.com/1bij.jpg",
+  };
+
+  const [memeImage, setMemeImage] = React.useState(meme);
+  const [allMemeImages, setAllMemeImages] = useState(memesData);
 
   function getMemeImage() {
-    const memesArray = memesData.data.memes;
+    const memesArray = allMemeImages.data.memes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
-    setMemeImage(memesArray[randomNumber].url);
+    setMemeImage((prevMeme) => {
+      return {
+        ...prevMeme,
+        randomImage: memesArray[randomNumber].url,
+      };
+    });
   }
 
   return (
@@ -23,12 +36,14 @@ export default function Meme() {
           Get a new meme image
         </button>
       </div>
-      <div className="meme--image-div">
+      <div className="meme">
         <img
           className="meme--image"
-          src={memeImage}
+          src={memeImage.randomImage}
           alt="meme image template"
         />
+        <h2 className="meme--text top">One does not simply</h2>
+        <h2 className="meme--text bottom">Walk into Mordor</h2>
       </div>
     </section>
   );
