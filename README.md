@@ -2,6 +2,9 @@
 
 ### Live Page: https://meme-generator-tsv.netlify.app/
 
+![image](https://user-images.githubusercontent.com/113384739/232239000-34453e62-a1b4-4b7c-a408-4975971ee699.png)
+
+
 This is a simple React application that allows you to generate custom memes by adding text to popular meme image templates.
 
 Type your text into the top and bottom input fields.
